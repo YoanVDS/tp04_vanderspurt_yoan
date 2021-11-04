@@ -1,0 +1,7 @@
+<ul *ngFor="let p of productsList$ | async">
+    <li>
+        <div>
+            Product <b>{{ p.ref }}</b>: <b>{{p.label}}</b>. Price: <b>{{ p.price }}</b>.
+        </div>
+    </li>
+</ul>

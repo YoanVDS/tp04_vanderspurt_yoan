@@ -1,0 +1,11 @@
+<form [formGroup]="searchForm" (ngSubmit)="onFormSubmit()">
+    <input type="text" class="form-control" formControlName="searchTerm" placeholder="Enter your search..."/>
+    <p>
+        <input type="radio" value="refSearch" formControlName="criteria"> Reference
+        <input type="radio" value="labelSearch" formControlName="criteria"> Label
+        <input type="radio" value="less100Search" formControlName="criteria"> Less 100$
+        <input type="radio" value="more100Search" formControlName="criteria"> More 100$
+    </p>
+</form>
+
+<app-products-list [(productsList$)]="productsList$"></app-products-list>
