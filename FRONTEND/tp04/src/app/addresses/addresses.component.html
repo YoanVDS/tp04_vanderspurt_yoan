@@ -1,0 +1,53 @@
+<h3>Adresse postale</h3>
+<div class="form-row" id="postalAddress" *ngIf="postalAddress$ | async as postalAddress">
+    <div class="form-group col-md-4">
+        <label><b>Adresse:</b> {{postalAddress.address}}</label>
+    </div>
+    <div class="form-group col-md-4">
+        <label><b>Ville:</b> {{postalAddress.city}}</label>
+    </div>
+    <div class="form-group col-md-2">
+        <label><b>Code postal:</b> {{postalAddress.zip}}</label>
+    </div>
+    <div class="form-group col-md-2">
+        <label><b>Pays:</b> {{postalAddress.country}}</label>
+    </div>
+</div>
+<br><br>
+<h3>Adresse de facturation</h3>
+<div class="form-row" id="billingAddress" *ngIf="billingAddress$ | async as billingAddress">
+    <div class="form-group col-md-4">
+        <label><b>Adresse:</b> {{billingAddress.address}}</label>
+    </div>
+    <div class="form-group col-md-4">
+        <label><b>Ville:</b> {{billingAddress.city}}</label>
+    </div>
+    <div class="form-group col-md-2">
+        <label><b>Code postal:</b> {{billingAddress.zip}}</label>
+    </div>
+    <div class="form-group col-md-2">
+        <label><b>Pays:</b> {{billingAddress.country}}</label>
+    </div>
+</div>
+<h4 *ngIf="!(billingAddress$ | async)">Aucune adresse de facturation sélectionnée</h4>
+<br><br>
+<h3>Toutes les adresses</h3>
+<ul *ngFor="let a of addresses$ | async">
+    <li>
+        <div class="form-group col-md-4">
+            <label><b>Adresse:</b> {{a.address}}</label>
+        </div>
+        <div class="form-group col-md-4">
+            <label><b>Ville:</b> {{a.city}}</label>
+        </div>
+        <div class="form-group col-md-2">
+            <label><b>Code postal:</b> {{a.zip}}</label>
+        </div>
+        <div class="form-group col-md-2">
+            <label><b>Pays:</b> {{a.country}}</label>
+        </div>
+        <button (click)="setPostalAddress(a)">Définir comme adresse postale</button>
+        <button (click)="setBillingAddress(a)">Définir comme adresse de facturation</button>
+    </li>
+</ul>
+<button>Ajouter une nouvelle adresse</button>

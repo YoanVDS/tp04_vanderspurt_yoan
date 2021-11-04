@@ -3,5 +3,8 @@
         <div>
             Product <b>{{ p.ref }}</b>: <b>{{p.label}}</b>. Price: <b>{{ p.price }}</b>.
         </div>
+        <button (click)="addProduct(p)">Add to basket</button>
     </li>
 </ul>
+
+

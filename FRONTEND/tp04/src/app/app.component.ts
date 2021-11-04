@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { UserState } from './user.state';
+import { User } from './user.state.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tp03';
+  title = 'tp04';
+  @Select(UserState.GetLoggedUser) loggedUser$: Observable<User>;
 }
