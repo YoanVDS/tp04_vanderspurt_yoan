@@ -5,14 +5,14 @@ import { User } from "./user.state.model"
 export class AddAddress{
     static readonly type = '[Address] Add';
 
-    constructor(public userPayload: User, public addressPayload: Address ){}
+    constructor(public payload: Address ){}
 
 }
 
 export class RemoveAddress{
     static readonly type = '[Address] Remove';
 
-    constructor(public userPayload: User, public addressPayload: Address){}
+    constructor(public payload: Address){}
 }
 
 export class AddUser{
@@ -36,11 +36,11 @@ export class SetLoggedUser{
 export class SetPostalAddress{
     static readonly type = '[Postal Address] Set';
 
-    constructor(public userPayload: User, public addressPayload: Address){}
+    constructor(public payload: Address){}
 }
 
 export class SetBillingAddress{
     static readonly type = '[Billing Address] Set';
 
-    constructor(public userPayload: User, public addressPayload: Address){}
+    constructor(public payload: Address){}
 }

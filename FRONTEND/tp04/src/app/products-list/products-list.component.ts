@@ -15,10 +15,13 @@ export class ProductsListComponent implements OnInit {
   constructor(private store: Store) { }
 
   @Input() productsList$: Observable<Array<Product>>;
+  detailedProduct: Product;
 
 
   ngOnInit() {
   }
 
   addProduct(product: Product) { this.store.dispatch(new AddProduct(product)); }; 
+
+  seeDetails(product: Product) { this.detailedProduct = product; }
 }

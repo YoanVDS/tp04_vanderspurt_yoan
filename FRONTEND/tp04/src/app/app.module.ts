@@ -17,6 +17,7 @@ import { RecapComponent } from './recap/recap.component';
 import { PhonePipe } from './phone.pipe';
 import { UserState } from './user.state';
 import { AddressesComponent } from './addresses/addresses.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 const appRoutes: Routes = [
   {
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     FormComponent,
     RecapComponent,
     PhonePipe,
-    AddressesComponent
+    AddressesComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

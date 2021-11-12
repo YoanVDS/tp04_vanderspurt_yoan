@@ -54,7 +54,7 @@ export class ProductsSearchBarComponent implements OnInit {
             break;
         default: break;
       }
-      if(newList == null) this.productsList$ = null;
+      if(newList == null) alert("Aucun produit ne correspond aux critères de recherche");
       else this.productsList$ = from(newList);
     });
   }

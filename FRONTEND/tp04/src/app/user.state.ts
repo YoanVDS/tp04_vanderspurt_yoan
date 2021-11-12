@@ -67,17 +67,40 @@ export class UserState{
         }
 
     @Action(AddAddress)
-        addAddress({userPayload, addressPayload} : AddAddress){
-            userPayload.addresses.push(addressPayload);
+        addAddress({getState, patchState}: StateContext<UserStateModel>, {payload}: AddAddress){
+            let state = getState();
+            let user = state.loggedUser;
+            user.addresses.push(payload);
+            patchState({
+                loggedUser: user
+            })
         }
 
     @Action(RemoveAddress)
-        removeAddress({userPayload, addressPayload} : AddAddress){
-            userPayload.addresses.filter(item =>
-                item.address != addressPayload.address
-            &&  item.city != addressPayload.city
-            &&  item.country != addressPayload.country
-            &&  item.zip != addressPayload.zip);
+        removeAddress({getState, patchState}: StateContext<UserStateModel>, {payload}: AddAddress){
+            let state = getState();
+            let user = state.loggedUser;
+            user.addresses = user.addresses.filter(item =>
+                item.address != payload.address
+            &&  item.city != payload.city
+            &&  item.country != payload.country
+            &&  item.zip != payload.zip);
+            if(user.billingAddress &&user.billingAddress.address == payload.address
+                && user.billingAddress.city == payload.city
+                && user.billingAddress.zip == payload.zip
+                && user.billingAddress.country == payload.country){
+                    user.billingAddress = null;
+                }
+            if(user.postalAddress && user.postalAddress.address == payload.address
+                    && user.postalAddress.city == payload.city
+                    && user.postalAddress.zip == payload.zip
+                    && user.postalAddress.country == payload.country){
+                    user.postalAddress = null;
+                }
+                           
+            patchState({
+                loggedUser: user
+            })
         }
 
     @Action(RemoveUser)
@@ -98,12 +121,22 @@ export class UserState{
         }
 
     @Action(SetPostalAddress)
-        setPostalAddress({userPayload,addressPayload}: SetPostalAddress){
-            userPayload.postalAddress = addressPayload;
+        setPostalAddress({getState, patchState}: StateContext<UserStateModel>, {payload}:SetPostalAddress){
+            let state = getState();
+            let user = state.loggedUser;
+            user.postalAddress = payload;
+            patchState({
+                loggedUser: user
+            })
         }
 
     @Action(SetBillingAddress)
-        setBillingAddress({userPayload,addressPayload}: SetBillingAddress){
-            userPayload.billingAddress = addressPayload;
+        setBillingAddress({getState, patchState}: StateContext<UserStateModel>, {payload}: SetBillingAddress){
+            let state = getState();
+            let user = state.loggedUser;
+            user.billingAddress = payload;
+            patchState({
+                loggedUser: user
+            })
         }
 }

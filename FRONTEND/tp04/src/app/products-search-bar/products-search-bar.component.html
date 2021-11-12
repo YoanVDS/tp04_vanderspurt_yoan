@@ -1,10 +1,10 @@
 <form [formGroup]="searchForm" (ngSubmit)="onFormSubmit()">
-    <input type="text" class="form-control" formControlName="searchTerm" placeholder="Enter your search..."/>
+    <input type="text" class="form-control" formControlName="searchTerm" placeholder="Entrez votre recherche..."/>
     <p>
-        <input type="radio" value="refSearch" formControlName="criteria"> Reference
+        <input type="radio" value="refSearch" formControlName="criteria"> Référence
         <input type="radio" value="labelSearch" formControlName="criteria"> Label
-        <input type="radio" value="less100Search" formControlName="criteria"> Less 100$
-        <input type="radio" value="more100Search" formControlName="criteria"> More 100$
+        <input type="radio" value="less100Search" formControlName="criteria"> -100€
+        <input type="radio" value="more100Search" formControlName="criteria"> +100€
     </p>
 </form>
 
